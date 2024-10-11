@@ -8,4 +8,7 @@
         <servlet-name>DatabaseConnection</servlet-name>
         <url-pattern>/DatabaseConnection</url-pattern>
     </servlet-mapping>
+    <session-config>
+        <session-timeout>21600</session-timeout>
+    </session-config>
 </web-app>
