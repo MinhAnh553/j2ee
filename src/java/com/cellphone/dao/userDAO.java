@@ -30,7 +30,57 @@ public class userDAO {
         return checked;
     }
     
-    public String create(userModel user) {
+    public boolean checkToken(String token) {
+        boolean checked = false;
+        String query = "SELECT * FROM users WHERE token = ?";
+        
+        
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, token);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                checked = true;
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return checked;
+    }
+    
+    public userModel getUserByEmail(String email) {
+        String sql = "SELECT * FROM users WHERE email = ?";
+        
+        try(Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                userModel user = new userModel();
+                
+                user.setId(rs.getInt("id"));
+                user.setEmail(rs.getString("email"));
+                user.setFullName(rs.getString("fullName"));
+                user.setPhone(rs.getString("phoneNumber"));
+                user.setPassword(rs.getString("password"));
+                user.setToken(rs.getString("token"));
+                
+                rs.close();
+                stmt.close();
+                conn.close();
+                
+                return user;
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public userModel create(userModel user) {
         String token = Util.generateToken();
         String sql = "INSERT INTO users(email, password, fullName, token) VALUES (?,?,?,?)";
         
@@ -49,7 +99,8 @@ public class userDAO {
         } catch(SQLException e) {
             e.printStackTrace();
         }
-        return token;
+        userModel userResult = getUserByEmail(user.getEmail());
+        return userResult;
     }  
 }
 

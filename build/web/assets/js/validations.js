@@ -16,7 +16,7 @@ if (formRegister) {
                 effect: 'slide',
                 speed: 300,
                 timeout: 1500,
-                customClass: 'notify-error' // Tùy chỉnh lớp CSS nếu cần
+                customClass: 'notify-error'
             });
             return; 
         }
@@ -29,7 +29,7 @@ if (formRegister) {
                 effect: 'slide',
                 speed: 300,
                 timeout: 1500,
-                customClass: 'notify-error' // Tùy chỉnh lớp CSS nếu cần
+                customClass: 'notify-error'
             });
             return; 
         }
@@ -42,7 +42,7 @@ if (formRegister) {
                 effect: 'slide',
                 speed: 300,
                 timeout: 1500,
-                customClass: 'notify-error' // Tùy chỉnh lớp CSS nếu cần
+                customClass: 'notify-error'
             });
             return; 
         }
@@ -55,13 +55,51 @@ if (formRegister) {
                 effect: 'slide',
                 speed: 300,
                 timeout: 1500,
-                customClass: 'notify-error' // Tùy chỉnh lớp CSS nếu cần
+                customClass: 'notify-error' 
             });
             return; 
         }
         
         formRegister.submit();
 
+    });
+}
+
+const formLogin = document.querySelector('.formLogin');
+if(formLogin) {
+    formLogin.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = formLogin.querySelector('#email').value;
+        const password = formLogin.querySelector('#password').value;
+                
+        if (isEmail(email) !== true) {
+            new Notify({
+                title: 'Thất bại!',
+                text: isEmail(email),
+                status: 'error',
+                effect: 'slide',
+                speed: 300,
+                timeout: 1500,
+                customClass: 'notify-error' 
+            });
+            return; 
+        }
+        
+        if(checkPass(password) !== null) {
+            new Notify({
+                title: 'Thất bại!',
+                text: checkPass(password),
+                status: 'error',
+                effect: 'slide',
+                speed: 300,
+                timeout: 1500,
+                customClass: 'notify-error' 
+            });
+            return; 
+        }
+        
+        formLogin.submit();
     });
 }
 

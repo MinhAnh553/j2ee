@@ -1,10 +1,16 @@
 package com.cellphone.model;
 
 public class userModel {
+    private int id;
     private String email;
     private String phone;
     private String password;
     private String fullName;
+    private String token;
+    
+    public userModel() {
+        this.email = "";
+    }
 
     public userModel(String email, String password) {
         this.email = email;
@@ -15,6 +21,14 @@ public class userModel {
         this.email = email;
         this.password = password;
         this.fullName = fullName;
+    }
+    
+    public int getId() {
+	return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -47,5 +61,13 @@ public class userModel {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+    
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

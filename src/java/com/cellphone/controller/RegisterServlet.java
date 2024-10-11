@@ -3,7 +3,6 @@ package com.cellphone.controller;
 import com.cellphone.dao.userDAO;
 import com.cellphone.model.userModel;
 import com.cellphone.providers.Util;
-import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +10,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,8 +20,30 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/client/pages/register.jsp");
-        dispatcher.forward(request, response);
+        // Check session
+        HttpSession session = request.getSession(false);
+        if(session != null) {
+            userModel user = (userModel) session.getAttribute("account");
+            if(user != null) {
+                // Check tiếp cookie
+                Cookie []cookies = request.getCookies();
+                if(cookies != null) {
+                    for(Cookie cookie : cookies) {
+                        if (cookie.getName().equals("accessToken")) {
+                            String token = cookie.getValue();
+                            userDAO service = new userDAO();
+                            if(service.checkToken(token)) {
+                                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                                return;
+                            }
+                        }  
+                    }
+                }
+            }
+        }
+        
+        // Chưa đăng nhập, đăng ký thì đưa vào trang đăng ký
+        request.getRequestDispatcher("/views/client/pages/register.jsp").forward(request, response);
     }
 
     @Override
@@ -49,13 +71,15 @@ public class RegisterServlet extends HttpServlet {
         }
         
         // Tạo tài khoản
-        String token = service.create(new userModel(email, password, fullName));
-        // Set cookie
-        Cookie accessToken = new Cookie("accessToken", token);
+        userModel user = service.create(new userModel(email, password, fullName));
+        // Tạo session
+        HttpSession session = request.getSession(true);
+        session.setAttribute("account", user);
+        // Tạo cookie
+        Cookie accessToken = new Cookie("accessToken", user.getToken());
         accessToken.setHttpOnly(true);
         accessToken.setMaxAge(60 * 60 * 24 * 15);
-        accessToken.setPath("/");
-        response.addCookie(accessToken); 
+        response.addCookie(accessToken);
         // Trả về thông báo thành công
         alert.put("type", "success");
         alert.put("msg", "Tạo tài khoản thành công!");
