@@ -1,8 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    request.setCharacterEncoding("UTF-8");
-    response.setCharacterEncoding("UTF-8");
-    
+<%  
+    request.setAttribute("pageTitle", "Trang chủ");
     String mainContent = "<main>\n" +
         "    <section class=\"search-result container fix-phone__inner py-3 px-5 d-none\">\n" +
         "        <h2 class=\"col-lg-3 section__heading\">KẾT QUẢ TÌM KIẾM</h2>\n" +
@@ -86,7 +84,5 @@
     request.setAttribute("mainContent", mainContent);
 %>
 
-<jsp:include page="./views/client/layouts/default.jsp">
-    <jsp:param name="pageTitle" value="Trang chủ"/>
-</jsp:include>
+<jsp:include page="./views/client/layouts/default.jsp"></jsp:include>
 

@@ -479,3 +479,12 @@ footer ul > li > a:hover {
 .cart-main {
     background-color: white;
 }
+
+.sn-notify-title {
+  font-size: 16px;
+  font-weight: bold; 
+}
+
+.sn-notify-text {
+  font-size: 15px; 
+}

@@ -1,10 +1,14 @@
+<%@page import="java.util.Map"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%  
+    String pageTitle = (String) request.getAttribute("pageTitle");
+%>
 <!DOCTYPE html>
 <html lang="vi">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>${param.pageTitle}</title>
+        <title><%=pageTitle%></title>
         <link
             rel="shortcut icon"
             href="./assets/img/favicon.png"
@@ -41,22 +45,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        <!-- CSS -->
-        <link rel="stylesheet" href="./assets/css/styles.css" />
-        <link rel="stylesheet" href="./assets/css/app.css" />
-        <link rel="stylesheet" href="./assets/css/login.css" />
-        <link rel="stylesheet" href="./assets/css/responsive.css" />
         
-    </head>
-
-    <body>
-        
-        <jsp:include page="../partials/header.jsp"></jsp:include>
-        
-        <!-- Nội dung của từng trang -->
-        <%= request.getAttribute("mainContent") %>
-        
-
         <script
             type="text/javascript"
             src="https://code.jquery.com/jquery-1.11.0.min.js"
@@ -69,9 +58,49 @@
             type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
         ></script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css" />
 
+        <!-- JS -->
+        <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+        <link rel="stylesheet" href="./assets/css/app.css" />
+        <link rel="stylesheet" href="./assets/css/login.css" />
+        <link rel="stylesheet" href="./assets/css/responsive.css" />
+    </head>
+
+    <body>
+        
+        <jsp:include page="../partials/header.jsp"></jsp:include>
+        
+        <% 
+            Map<String, String> alert = (Map<String, String>) request.getAttribute("alert");
+            if (alert != null) {
+        %>
+            <script>
+                new Notify({
+                    title: 'Thông báo!',
+                    text: '<%= alert.get("msg") %>',
+                    status: '<%= alert.get("type") %>',
+                    effect: 'slide',
+                    speed: 300,
+                    timeout: 3000,
+                    customClass: 'notify-error'
+                });
+            </script>
+        <% 
+            }
+        %>
+
+
+        <!-- Nội dung của từng trang -->
+        <%= request.getAttribute("mainContent") %>
+       
         <script src="./assets/js/main.js"></script>
         <script src="./assets/js/app.js"></script>
+        <script src="./assets/js/validations.js"></script>
         <script src="./assets/js/search.js"></script>
 
     </body>
