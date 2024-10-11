@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
         }
         
         if(!password.equals(user.getPassword())) {
-            alert.put("type", "error");
+           alert.put("type", "error");
            alert.put("msg", "Mật khẩu không chính xác!");
            request.setAttribute("alert", alert);
            request.getRequestDispatcher("/views/client/pages/login.jsp").forward(request, response);

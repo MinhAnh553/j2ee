@@ -4,8 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/model/userModel.java</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/web/views/client/pages/register.jsp</file>
+            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/web/views/client/partials/header.jsp</file>
             <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/RegisterServlet.java</file>
+            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/LogoutServlet.java</file>
             <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/dao/userDAO.java</file>
             <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/LoginServlet.java</file>
         </group>

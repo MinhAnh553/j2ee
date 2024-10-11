@@ -1,4 +1,9 @@
+<%@page import="com.cellphone.model.userModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    userModel account = (userModel) session.getAttribute("account");
+%>
 <!-- Header PC & Tablet -->
     <header class="header header-pc header-info">
         <div class="container py-3">
@@ -67,25 +72,64 @@
                                 </div>
                             </a>
                         </div>
-
+                        
                         <div class="col header-check">
-                            <a class="row header__item" href="login">
-                                <div class="col-3">
-                                    <div class="fs-1 text-light">
-                                        <i
-                                            class="fa fa-user header-icon"
-                                        ></i>
+                            <% if(account != null) { %>
+                                <div class="row header__item">
+                                    <div class="col-3">
+                                        <div class="fs-1 text-light">
+                                            <i
+                                                class="fa fa-user header-icon"
+                                            ></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-9">
                                     <div class="col-9">
-                                        <strong class="subheader"
-                                            >Đăng nhập</strong
-                                        >
+                                        <div class="col-9">
+                                            <strong class="subheader"
+                                                >Tài khoản</strong
+                                            >
+                                        </div>
                                     </div>
+                                    <ul class="sub-menu">
+                                        <li class="sub-menu-admin">
+                                            <a href="admin">
+                                                <i
+                                                    class="fa-solid fa-circle-user"
+                                                ></i>
+                                                Trang Admin</a
+                                            >
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <a href="./logout" >
+                                                <i
+                                                    class="fa-solid fa-right-from-bracket"
+                                                ></i>
+                                                Đăng xuất</a
+                                            >
+                                        </li>
+                                    </ul>
                                 </div>
-                            </a>
+                                <%    } else {%>
+                                <a class="row header__item" href="login">
+                                    <div class="col-3">
+                                        <div class="fs-1 text-light">
+                                            <i
+                                                class="fa fa-user header-icon"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="col-9">
+                                            <strong class="subheader"
+                                                >Đăng nhập</strong
+                                            >
+                                        </div>
+                                    </div>
+                                </a>
+                            <% } %>
                         </div>
+                       
                     </div>
                 </div>
             </div>
