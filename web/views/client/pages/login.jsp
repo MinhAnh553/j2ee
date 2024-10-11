@@ -9,8 +9,8 @@
         "            <h3 class=\"heading\">Đăng nhập</h3>\n" +
         "            <div class=\"spacer\"></div>\n" +
         "            <div class=\"form-group\">\n" +
-        "                <label for=\"account\" class=\"form-label\">Tài khoản</label>\n" +
-        "                <input id=\"account\" name=\"account\" type=\"text\" placeholder=\"Nhập tài khoản\" class=\"form-control\" />\n" +
+        "                <label for=\"email\" class=\"form-label\">Nhập email</label>\n" +
+        "                <input id=\"email\" name=\"email\" type=\"text\" placeholder=\"Nhập email\" class=\"form-control\" />\n" +
         "                <span class=\"form-message\"></span>\n" +
         "            </div>\n" +
         "            <div class=\"form-group\">\n" +
