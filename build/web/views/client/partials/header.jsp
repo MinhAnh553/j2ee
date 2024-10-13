@@ -1,3 +1,4 @@
+<%@page import="java.util.Map"%>
 <%@page import="com.cellphone.model.userModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -206,3 +207,22 @@
             </div>
         </div>
     </header>
+    
+    <% 
+        Map<String, String> alert = (Map<String, String>) request.getAttribute("alert");
+        if (alert != null) {
+    %>
+        <script>
+            new Notify({
+                title: 'Thông báo!',
+                text: '<%= alert.get("msg") %>',
+                status: '<%= alert.get("type") %>',
+                effect: 'slide',
+                speed: 300,
+                timeout: 3000,
+                customClass: 'notify-error'
+            });
+        </script>
+    <% 
+        }
+    %>
