@@ -52,70 +52,13 @@
         <jsp:include page="views/client/partials/header.jsp"></jsp:include>
 
         <main>
-            <section class="brand">
-                <div class="container">
-                    <div class="row">
-                        <div class="col py-3 px-5 brand__inner">
-                            <h2 class="section__heading">DỊCH VỤ SỬA CHỮA</h2>
-                            <div class="brand__group-logo">
-                                <img
-                                    src="./assets/img/iphone.png"
-                                    alt="iphone"
-                                    class="brand__img"
-                                />
-                                <img
-                                    src="./assets/img/samsung.png"
-                                    alt="samsung"
-                                    class="brand__img"
-                                />
-                                <img
-                                    src="./assets/img/Xiaomi.png"
-                                    alt="xiaomi"
-                                    class="brand__img"
-                                />
-                                <img
-                                    src="./assets/img/oppo.png"
-                                    alt="oppo"
-                                    class="brand__img"
-                                />
-                                <img
-                                    src="./assets/img/sony.png"
-                                    alt="sony"
-                                    class="brand__img"
-                                />
-                                <img
-                                    src="./assets/img/dell.png"
-                                    alt="dell"
-                                    class="brand__img"
-                                />
-                                <img
-                                    src="./assets/img/asus.png"
-                                    alt="asus"
-                                    class="brand__img"
-                                />
-                                <img
-                                    src="./assets/img/acer.png"
-                                    alt="acer"
-                                    class="brand__img"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section
-                class="search-result container fix-phone__inner py-3 px-5 d-none"
-            >
+            <section class="search-result container fix-phone__inner py-3 px-5 d-none">
                 <h2 class="col-lg-3 section__heading">KẾT QUẢ TÌM KIẾM</h2>
                 <div class="row">
                     <!-- <div class="row search-result__product col-3" id="smartphones-list">
                         <div class="col-lg product__item col-md-4 col-6 my-3">
                             <div class="product__media">
-                                <img
-                                    src="./assets/img/man_hinh_iphone7plus.jpg"
-                                    alt=""
-                                    class="product__media-img"
-                                />
+                                <img src="./assets/img/man_hinh_iphone7plus.jpg" alt="" class="product__media-img" />
                                 <span class="product__media-note">
                                     <p>BẢO HÀNH 6 THÁNG</p>
                                     <p>Sửa 1 giờ</p>
@@ -139,102 +82,23 @@
             <section class="fix-phone">
                 <div class="container fix-phone__inner">
                     <div class="row py-3 px-5">
-                        <h2 class="col-lg-3 section__heading col-12">
-                            SỬA CHỮA ĐIỆN THOẠI
-                        </h2>
-                        <div
-                            class="col-lg-8 offset-1 col-12 offset-0 mobile-none"
-                        >
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay pin
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay màn hình
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn responsivve-none"
-                            >
-                                Thay, độ vỏ
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn responsivve-none"
-                            >
-                                Thay ép cứng
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay camera
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay loa
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Lỗi nguồn
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Xem tất cả
-                            </button>
+                        <h2 class="col-lg-3 section__heading col-12">ĐIỆN THOẠI NỔI BẬT</h2>
+                        <div class="col-lg-8 offset-1 col-12 offset-0 mobile-none">
+                            <a href="apple"><button class="btn btn-primary btn-sm fix-phone__btn">Apple</button></a>
+                            <a href="samsung"><button class="btn btn-primary btn-sm fix-phone__btn">Samsung</button></a>
+                            <a href="xiaomi"><button class="btn btn-primary btn-sm fix-phone__btn">Xiaomi</button></a>
+                            <a href="oppo"><button class="btn btn-primary btn-sm fix-phone__btn">OPPO</button></a>
+                            <a href="vivo"><button class="btn btn-primary btn-sm fix-phone__btn">ViVo</button></a>
+                            <a href="realme"><button class="btn btn-primary btn-sm fix-phone__btn">realme</button></a>
+                            <a href="techno"><button class="btn btn-primary btn-sm fix-phone__btn">TECHNO</button></a>
+                            <a href="nokia"><button class="btn btn-primary btn-sm fix-phone__btn">Nokia</button></a>
+                            <a href="mobile"><button class="btn btn-primary btn-sm fix-phone__btn">Xem tất cả</button></a>
                         </div>
                     </div>
                     <div class="row product__list" id="smartphones-list"></div>
                 </div>
             </section>
-            <!-- Sửa laptop -->
-            <section class="fix-laptop">
-                <div class="container fix-phone__inner">
-                    <div class="row py-3 px-5">
-                        <h2 class="col-lg-3 section__heading col-12">
-                            SỬA CHỮA LAPTOP
-                        </h2>
-                        <div
-                            class="col-lg-7 offset-2 col-12 offset-0 mobile-none"
-                        >
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay ổ cứng
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay RAM
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay pin
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay bàn phím
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Thay màn hình
-                            </button>
-                            <button
-                                class="btn btn-primary btn-sm fix-phone__btn"
-                            >
-                                Xem tất cả
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row product__list" id="laptops-list"></div>
-                </div>
-            </section>
+
             <!-- Features -->
             <section class="features">
                 <div class="container py-3 px-5 bg-light">
