@@ -142,7 +142,7 @@
                     </div>
                 </div>
                 <a
-                    href="index.jsp"
+                    href="./"
                     target="_blank"
                     class="btn btn-primary btn-sm mb-3 w-100"
                     >Trang chủ</a
