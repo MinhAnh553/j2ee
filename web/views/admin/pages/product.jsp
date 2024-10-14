@@ -227,7 +227,7 @@
                             <td><%= brand%></td>
                             <td><%= price%></td>
                             <td><%= color%></td>
-                            <td><img src="<%= image%>" alt="Hình ảnh" width="50"></td>
+                            <td><img src="${pageContext.request.contextPath}<%= image%>" alt="Hình ảnh" width="50"></td>
                             <td><%= description%></td>
                             <td>
                                 <a href="admin-product?action=delete&id=<%= id%>" class="delete-btn">Xóa</a>
