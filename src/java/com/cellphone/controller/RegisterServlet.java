@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
                             String token = cookie.getValue();
                             userDAO service = new userDAO();
                             if(service.checkToken(token)) {
-                                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                                response.sendRedirect("./");
                                 return;
                             }
                         }  
@@ -84,7 +84,9 @@ public class RegisterServlet extends HttpServlet {
         alert.put("type", "success");
         alert.put("msg", "Tạo tài khoản thành công!");
         request.setAttribute("alert", alert);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        session.setAttribute("alert", alert); 
+//        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        response.sendRedirect("./");
     }
   
     @Override

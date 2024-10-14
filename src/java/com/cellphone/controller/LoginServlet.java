@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
                             String token = cookie.getValue();
                             userDAO service = new userDAO();
                             if(service.checkToken(token)) {
-                                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                                response.sendRedirect("./");
                                 return;
                             }
                         }  
@@ -63,6 +63,8 @@ public class LoginServlet extends HttpServlet {
            alert.put("type", "error");
            alert.put("msg", "Email không tồn tại trong hệ thống!");
            request.setAttribute("alert", alert);
+           HttpSession session = request.getSession(false);
+           session.setAttribute("alert", alert);
            request.getRequestDispatcher("/views/client/pages/login.jsp").forward(request, response);
            return;
         }
@@ -71,6 +73,8 @@ public class LoginServlet extends HttpServlet {
            alert.put("type", "error");
            alert.put("msg", "Mật khẩu không chính xác!");
            request.setAttribute("alert", alert);
+           HttpSession session = request.getSession(false);
+           session.setAttribute("alert", alert);
            request.getRequestDispatcher("/views/client/pages/login.jsp").forward(request, response);
            return;
         }
@@ -87,7 +91,9 @@ public class LoginServlet extends HttpServlet {
         alert.put("type", "success");
         alert.put("msg", "Đăng nhập thành công!");
         request.setAttribute("alert", alert);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);       
+        session.setAttribute("alert", alert);
+//        request.getRequestDispatcher("/views/client/pages/home.jsp").forward(request, response); 
+        response.sendRedirect("./");
     }
 
     @Override

@@ -27,8 +27,10 @@ public class LogoutServlet extends HttpServlet {
         Map<String, String> alert = new HashMap<>();
         alert.put("type", "success");
         alert.put("msg", "Đăng xuất thành công!");
-        request.setAttribute("alert", alert);
+//        request.setAttribute("alert", alert);
+        session.setAttribute("alert", alert);
         
-        request.getRequestDispatcher("./").forward(request, response);   
+//        request.getRequestDispatcher("./").forward(request, response);
+        response.sendRedirect("./");
     }
 }
