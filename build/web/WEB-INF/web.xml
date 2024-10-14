@@ -4,9 +4,25 @@
         <servlet-name>DatabaseConnection</servlet-name>
         <servlet-class>com.cellphone.model.DatabaseConnection</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminProductServlet</servlet-name>
+        <servlet-class>com.cellphone.controller.AdminProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Dashboard</servlet-name>
+        <servlet-class>com.cellphone.controller.Dashboard</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DatabaseConnection</servlet-name>
         <url-pattern>/DatabaseConnection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminProductServlet</servlet-name>
+        <url-pattern>/AdminProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Dashboard</servlet-name>
+        <url-pattern>/Dashboard</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>21600</session-timeout>
