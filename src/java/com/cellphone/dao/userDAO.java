@@ -62,6 +62,7 @@ public class userDAO {
                 userModel user = new userModel();
                 
                 user.setId(rs.getInt("id"));
+                user.setRole(rs.getInt("role"));
                 user.setEmail(rs.getString("email"));
                 user.setFullName(rs.getString("fullName"));
                 user.setPhone(rs.getString("phoneNumber"));

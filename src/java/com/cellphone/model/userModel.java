@@ -2,6 +2,7 @@ package com.cellphone.model;
 
 public class userModel {
     private int id;
+    private int role;
     private String email;
     private String phone;
     private String password;
@@ -37,6 +38,14 @@ public class userModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
     
     public String getPhone() {

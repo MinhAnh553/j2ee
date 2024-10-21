@@ -167,8 +167,8 @@
                     </div>
                 </div>
                 <a
-                    href=""
-                    target="_blank"
+                    href="./"
+                    target=""
                     class="btn btn-primary btn-sm mb-3 w-100"
                     >Trang chủ</a
                 >

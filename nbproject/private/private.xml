@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/model/userModel.java</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/web/views/client/pages/home.jsp</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/model/DatabaseConnection.java</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/Dashboard.java</file>
             <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/HomeServlet.java</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/dao/Products.java</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/web/views/admin/pages/dashboard.jsp</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/model/Product.java</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/web/views/admin/pages/product.jsp</file>
             <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/RegisterServlet.java</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/LogoutServlet.java</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/AdminProductServlet.java</file>
             <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/LoginServlet.java</file>
+            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/dao/userDAO.java</file>
         </group>
     </open-files>
 </project-private>

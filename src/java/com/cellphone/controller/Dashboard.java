@@ -4,6 +4,7 @@
  */
 package com.cellphone.controller;
 
+import com.cellphone.model.userModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -22,6 +24,23 @@ public class Dashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if(session != null) {
+            userModel user = (userModel) session.getAttribute("account");
+            if(user != null) {
+                if(user.getRole() != 0) {
+                    System.out.println(user.getRole());
+                    response.sendRedirect("./");
+                    return;
+                }
+            } else {
+                response.sendRedirect("./");
+                return;
+            }
+        } else {
+            response.sendRedirect("./");
+            return;
+        }
         request.getRequestDispatcher("/views/admin/pages/dashboard.jsp").forward(request, response);
     }
 
