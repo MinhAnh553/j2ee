@@ -140,7 +140,7 @@
                             <a href="<%= "Product_Detail" + "?slug=" + product.getSlug() %>">
                                 <div class="product__media">
                                     <img
-                                        src="${pageContext.request.contextPath}<%= product.getImage() %>"
+                                        src="data:image/jpeg;base64,<%= product.getImage() %>"
                                         alt="<%= product.getName() %>"
                                         class="product__media-img"
                                         />

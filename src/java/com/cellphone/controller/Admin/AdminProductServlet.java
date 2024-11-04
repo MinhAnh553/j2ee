@@ -1,4 +1,4 @@
-package com.cellphone.controller;
+package com.cellphone.controller.Admin;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin-product")
+@WebServlet("/admin/product")
 public class AdminProductServlet extends HttpServlet {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/cellphone";
@@ -85,10 +85,10 @@ public class AdminProductServlet extends HttpServlet {
 
                 stmt.executeUpdate();
                 conn.close();
-                response.sendRedirect("./admin-product?message=deleted");
+                response.sendRedirect("./product");
             } catch (Exception e) {
                 e.printStackTrace();
-                response.sendRedirect("./admin-product?message=error");
+                response.sendRedirect("./product");
             }
         } else {
             request.getRequestDispatcher("/views/admin/pages/product.jsp").forward(request, response);

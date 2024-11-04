@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cellphone.model;
-
-/**
- *
- * @author duylo
- */
 
 public class Product {
     int id;            // ID của sản phẩm
@@ -23,6 +14,27 @@ public class Product {
     public Product() {
         this.name="";
     }
+    
+    public Product(String name, String brand, double price, String typeByColor, String image, String description, String slug) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.typeByColor = typeByColor;
+        this.image = image;
+        this.description = description;
+        this.slug = slug;
+    }
+    
+    public Product(int id, String name, String brand, double price, String typeByColor, String image, String description) {
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.typeByColor = typeByColor;
+        this.image = image;
+        this.description = description;
+    }
+
 
     // Getter và Setter cho id
     public int getId() {

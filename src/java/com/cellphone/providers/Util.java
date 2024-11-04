@@ -41,4 +41,20 @@ public class Util {
             throw new RuntimeException("Lỗi: Thuật toán không tồn tại", e);
         }
     }
+    
+    public static String generateSlug(String name) {
+        // Chuyển thành chữ thường
+        String slug = name.toLowerCase();
+        
+        // Thay thế các ký tự không phải chữ cái hoặc số bằng khoảng trắng
+        slug = slug.replaceAll("[^a-z0-9\\s]", "");
+        
+        // Thay thế khoảng trắng bằng dấu gạch nối
+        slug = slug.replaceAll("\\s+", "-");
+        
+        // Loại bỏ dấu gạch nối ở đầu và cuối
+        slug = slug.replaceAll("^-|-$", "");
+        
+        return slug;
+    }
 }

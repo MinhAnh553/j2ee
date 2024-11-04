@@ -91,7 +91,7 @@
                     <div class="info__content row">
                         <div class="info__left col-md-7">
                             <div class="info__left-block">
-                                <img class="product-image" src="<c:url value='${product.image}' />" alt="${product.name}">
+                                <img class="product-image" src="data:image/jpeg;base64,<c:url value='${product.image}' />" alt="${product.name}">
 
                             </div>
 
