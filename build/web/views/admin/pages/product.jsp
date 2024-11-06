@@ -1,3 +1,4 @@
+<%@page import="com.cellphone.providers.Util"%>
 <%@page import="com.cellphone.model.Product"%>
 <%@page import="com.cellphone.dao.productDAO"%>
 <%@ page import="java.sql.*, java.util.*" %>
@@ -13,7 +14,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
             />
-        <title>Trang quản trị</title>
+        <title>Quản lý sản phẩm</title>
 
         <!--     Fonts and icons     -->
         <link
@@ -51,7 +52,6 @@
                             <th>Giá</th>
                             <th>Màu sắc</th>
                             <th>Hình ảnh</th>
-                            <th>Mô tả</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
@@ -69,12 +69,12 @@
                                 <td><%= stt%></td>
                                 <td><%= product.getName()%></td>
                                 <td><%= product.getBrand()%></td>
-                                <td><%= product.getPrice()%></td>
+                                <td><%= Util.FormatPrice(product.getPrice())%>₫</td>
                                 <td><%= product.getTypeByColor()%></td>
-                                <td><img src="data:image/jpeg;base64,<%= product.getImage() %>" alt="Product Image" width="50"/></td>
-                                <td><%= product.getDescription()%></td>
+                                <td><img src="data:image/jpeg;base64,<%= product.getImage() %>" alt="Product Image" width="60" style="border: 2px solid #ccc; border-radius: 5px;"/></td>              
                                 <td>
-                                    <a href="product?action=delete&id=<%= product.getId()%>" class="delete-btn">Xóa</a>
+                                    <a href="product/edit?id=<%= product.getId()%>" class="delete-btn" style="background-color: blueviolet">Chỉnh sửa</a>
+                                    <a href="product?action=delete&id=<%= product.getId()%>" class="delete-btn" delete-product>Xóa</a>
                                 </td>
                             </tr>
                         <%
@@ -86,7 +86,7 @@
             </div>
         </main>
         <script>
-            const deleteBtns = document.querySelectorAll(".delete-btn");
+            const deleteBtns = document.querySelectorAll("[delete-product]");
 
             deleteBtns.forEach((deleteBtn) => {
                 deleteBtn.addEventListener("click", (e) => {
@@ -99,8 +99,8 @@
             });
         </script>
         <!--   Core JS Files   -->
+        <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/core/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/core/bootstrap.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
     </body>
 </html>

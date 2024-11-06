@@ -68,7 +68,7 @@
         
         <div class="container">
             <a href="${pageContext.request.contextPath}/admin/product" class="btn btn-primary add-btn mb-3">Quay lại</a>
-            <form action="${pageContext.request.contextPath}/admin/product/add" method="POST" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/admin/product/add" method="POST" enctype="multipart/form-data" id="form-add-product">
                 <label for="name">Tên sản phẩm:</label>
                 <input type="text" name="name" required>
 
@@ -78,10 +78,11 @@
                     if (brandList != null && !brandList.isEmpty()) {
                 %>
                 <select name="brand" id="brand" class="form-select form-select-sm mb-3" required>
+                    <option value="" disabled selected >--- Chọn thương hiệu ---</option>
                     <%
                         for (brandModel brand : brandList) {
                     %>
-                        <option value="<%= brand.getId()%>"><%= brand.getName()%></option>
+                        <option value="<%= brand.getName()%>"><%= brand.getName()%></option>
                     <%
                         }
                     %>
@@ -98,7 +99,7 @@
 
                 <div class="form-group mb-3">
                     <label for="description">Mô tả:</label>
-                    <textarea id="mytextarea" class="form-control tinymce" type="text" name="description" rows="5"></textarea>
+                    <textarea id="mytextarea" class="form-control tinymce" type="text" name="description" rows="3"></textarea>
                 </div>
                 <div class="form-group mb-3" upload-image="upload-image">
                   <label for="image">Ảnh</label>
@@ -109,7 +110,7 @@
                 <button type="submit" class="submit-btn">Thêm sản phẩm</button>
             </form>
         </div>
-                
+              
         <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
     </body>
 </html>

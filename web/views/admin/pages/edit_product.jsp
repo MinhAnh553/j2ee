@@ -1,3 +1,5 @@
+<%@page import="com.cellphone.dao.brandDAO"%>
+<%@page import="com.cellphone.model.Product"%>
 <%@page import="java.util.Map"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
@@ -5,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Thêm sản phẩm</title>
+        <title>Chỉnh sửa sản phẩm</title>
         <!-- Bootstrap -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -65,24 +67,26 @@
         </script>
     </head>
     <body>
-        
+        <%
+            Product product = (Product) request.getAttribute("product");
+        %>
         <div class="container">
             <a href="${pageContext.request.contextPath}/admin/product" class="btn btn-primary add-btn mb-3">Quay lại</a>
-            <form action="${pageContext.request.contextPath}/admin/product/add" method="POST" enctype="multipart/form-data" id="form-add-product">
+            <form action="${pageContext.request.contextPath}/admin/product/edit?id=<%= product.getId()%>" method="POST" enctype="multipart/form-data">
                 <label for="name">Tên sản phẩm:</label>
-                <input type="text" name="name" required>
+                <input type="text" name="name" value="<%= product.getName() %>" required>
 
                 <label for="brand" class="mb-3">Hãng:</label>
                 <%
-                    List<brandModel> brandList = (List<brandModel>) request.getAttribute("brands");
+                    brandDAO brandSevices = new brandDAO();
+                    List<brandModel> brandList = (List<brandModel>) brandSevices.getAllBrand();
                     if (brandList != null && !brandList.isEmpty()) {
                 %>
                 <select name="brand" id="brand" class="form-select form-select-sm mb-3" required>
-                    <option value="" disabled selected >--- Chọn thương hiệu ---</option>
                     <%
                         for (brandModel brand : brandList) {
                     %>
-                        <option value="<%= brand.getName()%>"><%= brand.getName()%></option>
+                        <option value="<%= brand.getName()%>" <%= brand.getName().equals(product.getBrand()) ? "selected" : "" %> ><%= brand.getName()%></option>
                     <%
                         }
                     %>
@@ -92,25 +96,30 @@
                 %>
 
                 <label for="price">Giá:</label>
-                <input type="number" name="price" required>
+                <input type="number" name="price" value="<%= product.getPrice()%>" required>
 
                 <label for="typeByColor">Màu sắc:</label>
-                <input type="text" name="typeByColor" required>
+                <input type="text" name="typeByColor" value="<%= product.getTypeByColor()%>" required>
 
                 <div class="form-group mb-3">
                     <label for="description">Mô tả:</label>
-                    <textarea id="mytextarea" class="form-control tinymce" type="text" name="description" rows="3"></textarea>
+                    <textarea id="mytextarea" class="form-control tinymce" type="text" name="description" rows="3"><%= product.getDescription()%></textarea>
                 </div>
                 <div class="form-group mb-3" upload-image="upload-image">
-                  <label for="image">Ảnh</label>
-                  <input class="form-control" type="file" id="image" name="image" accept="image/*" upload-image-input="upload-image-input"/>
-                  <image class="image-preview" src="" upload-image-preview="upload-image-preview"></image>
+                    <label for="image">Ảnh</label>
+                    <input class="form-control" type="file" id="image" name="image" accept="image/*" upload-image-input="upload-image-input"/>
+                    <image 
+                        class="image-preview" 
+                        src="data:image/jpeg;base64,<%= product.getImage() %>"
+                        alt="<%= product.getName() %>" 
+                        upload-image-preview="upload-image-preview">
+                    </image>
                 </div> 
 
-                <button type="submit" class="submit-btn">Thêm sản phẩm</button>
+                <button type="submit" class="submit-btn">Xác nhận</button>
             </form>
         </div>
-              
+                
         <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
     </body>
 </html>
