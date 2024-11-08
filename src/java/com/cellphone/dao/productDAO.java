@@ -51,8 +51,9 @@ public class productDAO {
                 String color = rs.getString("typeByColor");
                 String image = rs.getString("image");
                 String description = rs.getString("description"); 
-
-                Product product = new Product(id, name, brand, price, color, image, description);
+                int stock = rs.getInt("stock");
+                
+                Product product = new Product(id, name, brand, price, color, image, description, stock);
                 productList.add(product);
             }
             rs.close();
@@ -83,7 +84,7 @@ public class productDAO {
     }
     
     public void update(Product product) {
-        String sql = "UPDATE product SET name = ?, brand = ?, price = ?, typeByColor = ?, image = ?, description = ?, slug = ? WHERE id = ?";
+        String sql = "UPDATE product SET name = ?, brand = ?, price = ?, typeByColor = ?, image = ?, description = ?, stock = ?, slug = ? WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -93,8 +94,9 @@ public class productDAO {
             stmt.setString(4, product.getTypeByColor());
             stmt.setString(5, product.getImage());
             stmt.setString(6, product.getDescription());
-            stmt.setString(7, product.getSlug());
-            stmt.setInt(8, product.getId());  
+            stmt.setInt(7, Math.max(product.getStock(), 0));
+            stmt.setString(8, product.getSlug());
+            stmt.setInt(9, product.getId());  
             stmt.executeUpdate();
 
             stmt.close();
@@ -120,8 +122,9 @@ public class productDAO {
                 String color = rs.getString("typeByColor");
                 String image = rs.getString("image");
                 String description = rs.getString("description"); 
+                int stock = rs.getInt("stock");
 
-                Product product = new Product(id, name, brand, price, color, image, description);
+                Product product = new Product(id, name, brand, price, color, image, description, stock);
 
                 
                 rs.close();

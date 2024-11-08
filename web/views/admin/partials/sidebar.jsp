@@ -68,6 +68,16 @@
                     <span class="nav-link-text ms-5">Hoá đơn</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/inventory">
+                    <div
+                        class="border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+                        >
+
+                    </div>
+                    <span class="nav-link-text ms-5">Lịch sử kho hàng</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/admin/report">

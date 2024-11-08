@@ -46,13 +46,14 @@
                 <table class="product-table">
                     <thead>
                         <tr>
-                            <th>STT</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Hãng</th>
-                            <th>Giá</th>
-                            <th>Màu sắc</th>
-                            <th>Hình ảnh</th>
-                            <th>Thao tác</th>
+                            <th class="text-center">STT</th>
+                            <th class="text-center">Tên sản phẩm</th>
+                            <th class="text-center">Hãng</th>
+                            <th class="text-center">Giá</th>
+                            <th class="text-center">Màu sắc</th>
+                            <th class="text-center">Tồn kho</th>
+                            <th class="text-center">Hình ảnh</th>
+                            <th class="text-center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,11 +67,17 @@
                         %>
                         
                             <tr>
-                                <td><%= stt%></td>
+                                <td class="text-center"><%= stt%></td>
                                 <td><%= product.getName()%></td>
-                                <td><%= product.getBrand()%></td>
-                                <td><%= Util.FormatPrice(product.getPrice())%>₫</td>
-                                <td><%= product.getTypeByColor()%></td>
+                                <td class="text-center"><%= product.getBrand()%></td>
+                                <td class="text-center"><%= Util.FormatPrice(product.getPrice())%>₫</td>
+                                <td class="text-center"><%= product.getTypeByColor()%></td>
+                                <td class="text-end">
+                                    <div style="padding-left: 7px;">
+                                        <%= product.getStock()%>
+                                        <a href="product-inventory/edit?id=<%= product.getId()%>" class="delete-btn" style="background-color: blueviolet">Sửa</a>
+                                    </div>
+                                </td>
                                 <td><img src="data:image/jpeg;base64,<%= product.getImage() %>" alt="Product Image" width="60" style="border: 2px solid #ccc; border-radius: 5px;"/></td>              
                                 <td>
                                     <a href="product/edit?id=<%= product.getId()%>" class="delete-btn" style="background-color: blueviolet">Chỉnh sửa</a>
