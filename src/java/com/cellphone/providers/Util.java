@@ -3,6 +3,8 @@ package com.cellphone.providers;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Util {
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -40,5 +42,36 @@ public class Util {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Lỗi: Thuật toán không tồn tại", e);
         }
+    }
+    
+    public static String generateSlug(String name) {
+        // Chuyển thành chữ thường
+        String slug = name.toLowerCase();
+        
+        // Thay thế các ký tự không phải chữ cái hoặc số bằng khoảng trắng
+        slug = slug.replaceAll("[^a-z0-9\\s]", "");
+        
+        // Thay thế khoảng trắng bằng dấu gạch nối
+        slug = slug.replaceAll("\\s+", "-");
+        
+        // Loại bỏ dấu gạch nối ở đầu và cuối
+        slug = slug.replaceAll("^-|-$", "");
+        
+        return slug;
+    }
+    
+    public static String FormatPrice(int price) {
+        NumberFormat formatter = NumberFormat.getNumberInstance(new Locale("vi", "VN"));
+        String formattedPrice = formatter.format(price);
+        
+        return formattedPrice;
+    }
+    
+    public static String FormatPricePromotion(int price, int percent) {
+        NumberFormat formatter = NumberFormat.getNumberInstance(new Locale("vi", "VN"));
+        float discountedPrice = price * (1 - (percent / 100.0f));
+        String formattedPrice = formatter.format(discountedPrice);
+        
+        return formattedPrice;
     }
 }

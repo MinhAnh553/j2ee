@@ -84,7 +84,7 @@
                 </div>
             </section>
             <div class="container">
-                <form action="/project_j2ee/AddToCart" method="POST">
+                <form action="${pageContext.request.contextPath}/AddToCart" method="POST">
                     <input type="hidden" name="productId" value="${product.id}" />
                     <input type="hidden" name="productName" value="${product.name}" />
                     <input type="hidden" name="productPrice" value="${product.price}" />
@@ -96,7 +96,7 @@
                     <div class="info__content row">
                         <div class="info__left col-md-7">
                             <div class="info__left-block">
-                                <img class="product-image" src="<c:url value='${product.image}' />" alt="${product.name}">
+                                <img class="product-image" src="data:image/jpeg;base64,<c:url value='${product.image}' />" alt="${product.name}">
 
                             </div>
 
@@ -118,8 +118,13 @@
                         <div class="info__right col-md-5">
                                 <h2 class="info__right-title">GIÁ KHUYẾN MÃI</h2>
                             <div class="info__right-price product__price">
-                                <span> <fmt:formatNumber value="${product.price*0.9}" type="currency" currencySymbol="VNĐ" /></span><br/>
-                                <span> <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="VNĐ" /></span>
+                                <span>
+                                    <fmt:formatNumber value="${product.price * 0.9}" type="currency" currencySymbol="VNĐ" maxFractionDigits="0" />
+                                </span><br/>
+                                <span>
+                                    <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="VNĐ" maxFractionDigits="0" />
+                                </span>
+
                             </div>
                             <div class="info__right-timing">
                                 <h2>

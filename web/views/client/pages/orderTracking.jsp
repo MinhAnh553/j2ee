@@ -1,3 +1,4 @@
+<%@page import="com.cellphone.providers.Util"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.cellphone.model.Order" %>
@@ -116,7 +117,7 @@
                             <p><strong>Phương thức nhận hàng:</strong>
                                 <%= (order.getReceiveMethod() == 0) ? "Nhận tại cửa hàng" : "Giao hàng tận nơi" %>
                             </p>
-                            <p><strong>Tổng tiền:</strong> <%= order.getTotal() %> VNĐ</p>
+                            <p><strong>Tổng tiền:</strong> <%=  Util.FormatPrice((int) order.getTotal()) %> VNĐ</p>
                             <%-- Thêm nút hủy đơn khi đơn hàng chưa bị hủy --%>
                             <% if (order.getStatus() == 0) { %> <!-- Kiểm tra nếu đơn hàng đang chờ xử lý -->
                                 <form action="/project_j2ee/CancelOrder" method="POST">

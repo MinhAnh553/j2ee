@@ -24,15 +24,6 @@ import java.util.*;
 @WebServlet(name = "Product_Detail", urlPatterns = {"/Product_Detail/*"})
 public class Product_Detail extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -60,18 +51,18 @@ public class Product_Detail extends HttpServlet {
                 product.setColor(result.getString("typeByColor"));
                 product.setImage(result.getString("image"));
                 product.setDesc(result.getString("description"));
-                product.setPrice(result.getDouble("price"));
+                product.setPrice(result.getInt("price"));
                 product.setSlug(result.getString("slug"));
                 
-                System.out.println("Sản phẩm đã lấy: ");
-                System.out.println("ID: " + product.getId());
-                System.out.println("Tên: " + product.getName());
-                System.out.println("Hãng: " + product.getBrand());
-                System.out.println("Màu: " + product.getTypeByColor());
-                System.out.println("Hình ảnh: " + product.getImage());
-                System.out.println("Mô tả: " + product.getDescription());
-                System.out.println("Giá: " + product.getPrice());
-                System.out.println("Slug: " + product.getSlug());
+//                System.out.println("Sản phẩm đã lấy: ");
+//                System.out.println("ID: " + product.getId());
+//                System.out.println("Tên: " + product.getName());
+//                System.out.println("Hãng: " + product.getBrand());
+//                System.out.println("Màu: " + product.getTypeByColor());
+//                System.out.println("Hình ảnh: " + product.getImage());
+//                System.out.println("Mô tả: " + product.getDescription());
+//                System.out.println("Giá: " + product.getPrice());
+//                System.out.println("Slug: " + product.getSlug());
             }
         } catch (SQLException e) {
             throw new ServletException("Lỗi kết nối CSDL: " + e.getMessage(), e);

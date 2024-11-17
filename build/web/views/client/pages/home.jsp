@@ -1,3 +1,4 @@
+<%@page import="com.cellphone.providers.Util"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.cellphone.model.Product" %>
@@ -140,7 +141,7 @@
                             <a href="<%= "Product_Detail" + "?slug=" + product.getSlug() %>">
                                 <div class="product__media">
                                     <img
-                                        src="${pageContext.request.contextPath}<%= product.getImage() %>"
+                                        src="data:image/jpeg;base64,<%= product.getImage() %>"
                                         alt="<%= product.getName() %>"
                                         class="product__media-img"
                                         />
@@ -152,18 +153,12 @@
                                         product.promotion
                                         }%</div>
                                 </div>
-                                <%
-                                    // Tạo đối tượng DecimalFormat để định dạng giá
-                                    java.text.DecimalFormat df = new java.text.DecimalFormat("#,###");
-                                %>
 
                                 <div class="product__info">
                                     <h3><%= product.getName() %></h3>
                                     <div class="product__price">
-                                        <!-- Tính giá khuyến mãi và định dạng nó -->
-                                        <span><%= df.format(product.getPrice() * 0.9) %> VNÐ</span>
-                                        <!-- Hiển thị giá gốc và định dạng nó -->
-                                        <span><%= df.format(product.getPrice()) %> VNÐ</span>
+                                        <span><%= Util.FormatPricePromotion(product.getPrice(), 10) %> VNÐ</span>
+                                        <span><%= Util.FormatPrice(product.getPrice()) %> VNÐ</span>
 
                                     </div>
                                     <p class="product__desc">

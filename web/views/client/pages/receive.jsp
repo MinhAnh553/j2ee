@@ -39,7 +39,8 @@
             />
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="./assets/css/styles.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/responsive.css" />
     </head>
 
     <body>
@@ -62,7 +63,7 @@
                                     <c:forEach var="item" items="${sessionScope.cart}">
                                         <li class="list-group-item">
                                             <span>${item.productName}</span> 
-                                            <span class="float-end">Số lượng: ${item.productQuantity} - <fmt:formatNumber value="${item.productPrice*item.productQuantity}" type="currency" currencySymbol="VNĐ" /></span>
+                                            <span class="float-end">Số lượng: ${item.productQuantity} - <fmt:formatNumber value="${item.productPrice*item.productQuantity}" type="currency" currencySymbol="VNĐ" maxFractionDigits="0"/></span>
                                         </li>
 
                                         <c:set var="totalPrice" value = "${totalPrice + item.productPrice*item.productQuantity}" />
@@ -72,7 +73,7 @@
                                 <input type ="text" value ="${sessionScope.account.fullName}">
                                 <input type ="text" value ="${sessionScope.account.email}">
                                 <input type ="text" value ="${sessionScope.account.phone}">
-                                <form action="/project_j2ee/views/client/pages/payment.jsp" method="GET">
+                                <form action="${pageContext.request.contextPath}/payments" method="GET">
                                     <!-- Delivery Method: Store Pickup -->
                                     <div class="form-check">
                                         <input type="hidden" name="order_id" value="<%= request.getAttribute("order_id") %>" />

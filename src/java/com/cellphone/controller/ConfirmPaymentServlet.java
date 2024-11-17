@@ -118,8 +118,7 @@ public class ConfirmPaymentServlet extends HttpServlet {
             }catch (SQLException e) {
             throw new ServletException("Lỗi kết nối CSDL: " + e.getMessage(), e);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/client/pages/orderTracking.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("/views/client/pages/orderTracking.jsp").forward(request, response);
         
         
         

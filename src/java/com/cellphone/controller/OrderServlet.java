@@ -78,7 +78,7 @@ public class OrderServlet extends HttpServlet {
         userModel user = (userModel) request.getSession().getAttribute("account");
         if (user == null) {
             out.print("User is not logged in, redirecting to login <br>");
-            response.sendRedirect("/project_j2ee/login"); // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
+            response.sendRedirect(request.getContextPath() + "/login"); // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
             return;
         } else {
             out.print("User is logged in: " + user.getFullName() + "<br>");
@@ -138,7 +138,7 @@ public class OrderServlet extends HttpServlet {
         // Lấy đối tượng userModel từ session
         userModel user = (userModel) session.getAttribute("account");
         if (user == null) {
-            response.sendRedirect("/project_j2ee/login");  // Chuyển hướng đến trang đăng nhập nếu không có thông tin tài khoản
+            response.sendRedirect(request.getContextPath() + "/login");  // Chuyển hướng đến trang đăng nhập nếu không có thông tin tài khoản
             return;
         }
 

@@ -9,7 +9,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>FunPhone - Chọn hình thức nhận hàng</title>
+        <title>FunPhone - Chọn hình thức thanh toán</title>
         <link
             rel="shortcut icon"
             href="./assets/img/favicon.png"
@@ -41,7 +41,8 @@
         />
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="./assets/css/styles.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/responsive.css" />
     </head>
 
     <body>
@@ -64,13 +65,13 @@
                                     <c:forEach var="item" items="${sessionScope.cart}">
                                         <li class="list-group-item">
                                             <span>${item.productName}</span> 
-                                            <span class="float-end">Số lượng: ${item.productQuantity} - <fmt:formatNumber value="${item.productPrice*item.productQuantity}" type="currency" currencySymbol="VNĐ" /></span>
+                                            <span class="float-end">Số lượng: ${item.productQuantity} - <fmt:formatNumber value="${item.productPrice*item.productQuantity}" type="currency" currencySymbol="VNĐ" maxFractionDigits="0"/></span>
                                         </li>
 
                                         <c:set var="totalPrice" value = "${totalPrice + item.productPrice*item.productQuantity}" />
                                     </c:forEach>
                                 </ul>
-                                <h5 class="price-total">Tổng thanh toán: <fmt:formatNumber value="${totalPrice}" type="currency" currencySymbol="VNĐ" />
+                                <h5 class="price-total">Tổng thanh toán: <fmt:formatNumber value="${totalPrice}" type="currency" currencySymbol="VNĐ" maxFractionDigits="0"/>
                             </h5><br>
 
                             <h5 class="mt-3">Thông tin nhận hàng:</h5>
@@ -88,7 +89,7 @@
                                 <li class="list-group-item">Ghi chú: ${param.orderNote}</li>
                             </ul>
                             <h5 class="mt-3">Chọn phương thức thanh toán:</h5>
-                            <form action="/project_j2ee/ConfirmPaymentServlet" method="POST" id="codForm">
+                            <form action="${pageContext.request.contextPath}/ConfirmPaymentServlet" method="POST" id="codForm">
                                 <!-- Phương thức thanh toán khi nhận hàng -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="hidden" name="paymentMethod" value="cashOnDelivery" checked>
@@ -109,7 +110,7 @@
                                     <i class="fa fa-check-circle"></i> Xác nhận thanh toán
                                 </button>
                             </form>
-                            <form action="/project_j2ee/OnlinePaymentServlet" method="POST" id="onlineForm">
+                            <form action="${pageContext.request.contextPath}/OnlinePaymentServlet" method="POST" id="onlineForm">
                                 <!-- Phương thức thanh toán online -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="hidden" name="paymentMethod" value="creditCard">
