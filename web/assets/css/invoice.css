@@ -1,0 +1,153 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-radius: 20px;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+
+.invoice-table {
+    border-collapse: collapse;
+    width: 120%;
+    align-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: -80px
+}
+
+.invoice-table th, .invoice-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    padding-bottom: 0px
+}
+.invoice-table th {
+    padding-bottom: 10px;
+}
+.invoice-table thead {
+    background-color: #d02424;
+    color: #fff;
+}
+ul {
+    padding-left: 0;
+    list-style-position: inside;
+}
+th:first-child, td:first-child {
+    width: 40px;
+} 
+th:nth-child(2), td:nth-child(2) {
+    width: 100px;
+} 
+th:nth-child(3), td:nth-child(3) {
+    width: 145px;
+}
+th:nth-child(4), td:nth-child(4) {
+    width: 145px;
+}
+th:nth-child(9), td:nth-child(9) { /*Cot trang thai*/
+    width: 100px;
+}
+.cancel-button {
+    background: none; 
+    border: none;
+    font-size: 25px
+}
+.cancel-button.disabled {
+    cursor: not-allowed;
+    border: none;
+}
+.cancel-button {
+    cursor: pointer;
+    border: none;
+
+}
+.status-button {
+    border: 1px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px
+
+}
+.status-button, .cancel-button {
+    /*    border-radius: 5px;
+        padding: 5px 10px;*/
+}
+.status-waiting {
+    background-color: gray;
+    color: white;
+}
+.status-preparing {
+    background-color: yellow;
+    color: black;
+}
+.status-ready {
+    background-color: orange;
+    color: white;
+}
+.status-shipped {
+    background-color: darkorange;
+    color: white;
+}
+.status-completed {
+    background-color: green;
+    color: white;
+}
+.status-cancelled {
+    background-color: red;
+    color: white;
+}
+.status-button.status-canceled {
+    background-color: #e61414;
+    color: white;
+}
+
+.cancel-button.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.status-button.status-completed {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-button.status-delivered {
+    background-color: #FF9800;
+    color: white;
+}
+
+.status-button.status-ready {
+    background-color: #2196F3;
+    color: white;
+}
+
+.status-button.status-preparing {
+    background-color: #FFC107;
+    color: black;
+}
+
+.status-button.status-waiting {
+    background-color: #FF5722;
+    color: white;
+}
+
+.cancel-button.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.status-processing {
+    background-color: #000099;
+    color: white;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: not-allowed;
+}

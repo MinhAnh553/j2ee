@@ -70,9 +70,15 @@
                                     </c:forEach>
                                 </ul><br>
                                 <h5 class="mt-3">Thông tin khách hàng</h5>
-                                <input type ="text" value ="${sessionScope.account.fullName}">
-                                <input type ="text" value ="${sessionScope.account.email}">
-                                <input type ="text" value ="${sessionScope.account.phone}">
+                                    <div class="info-item">
+                                        <strong>Họ tên:</strong> <span>${sessionScope.account.fullName}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <strong>Email:</strong> <span>${sessionScope.account.email}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <strong>Số điện thoại:</strong> <span>${sessionScope.account.phone}</span>
+                                    </div><br>
                                 <form action="${pageContext.request.contextPath}/payments" method="GET">
                                     <!-- Delivery Method: Store Pickup -->
                                     <div class="form-check">

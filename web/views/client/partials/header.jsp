@@ -73,6 +73,21 @@
                                 </div>
                             </a>
                         </div>
+                        <%-- Kiểm tra xem có session "count" hay không --%>
+                        <% if (session.getAttribute("account") != null) { %>
+                            <div class="col">
+                                <a class="row header__item" href="OrderServlet">
+                                    <div class="col-3">
+                                        <div class="fs-1 text-light">
+                                            <i class="fa fa-box-open header-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-9">
+                                        <strong class="subheader"> Lịch sử</strong>
+                                    </div>
+                                </a>
+                            </div>
+                        <% } %>
                         
                         <div class="col header-check">
                             <% if(account != null) { %>

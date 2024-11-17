@@ -16,16 +16,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
         <style>
-            body {
-                font-family: 'Arial', sans-serif;
-                background-color: #f4f7fa;
-                padding-top: 30px;
-            }
 
-            .container {
-                max-width: 900px;
-                margin: 0 auto;
-            }
 
             .order-item {
                 background-color: #fff;
@@ -75,73 +66,64 @@
                 color: #004085;
             }
 
-            .alert-info {
-                background-color: #d1ecf1;
-                border-color: #bee5eb;
-                padding: 20px;
-                text-align: center;
-                font-size: 1.1em;
-            }
-
-            .navbar {
-                background-color: #007bff;
-            }
-
-            .navbar .navbar-brand {
-                color: #fff;
-            }
         </style>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/responsive.css" />
     </head>
 
     <body>
         <!-- Thanh điều hướng -->
+        <jsp:include page="../partials/header.jsp"></jsp:include>
+        <main class="payment-main py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Lịch sử Đơn hàng của bạn</h2>
 
-        <div class="container">
-            <h2 class="text-center mb-5">Lịch sử Đơn hàng của bạn</h2>
+                <%-- Lấy giá trị orders từ request --%>
+                <%
+                    List<Order> orders = (List<Order>) request.getAttribute("orders");
+                    if (orders != null && !orders.isEmpty()) {
+                        for (Order order : orders) {
+                %>
+                            <div class="order-item">
+                                <h5><i class="fas fa-box"></i> Đơn hàng #<%= order.getId() %></h5>
+                                <p><strong>Ngày đặt:</strong> <%= order.getCreatedAt() %></p>
+                                <p><strong>Trạng thái đơn hàng:</strong>
+                                    <span class="order-status 
+                                          <%= (order.getStatus() == 0) ? "status-pending" : (order.getStatus() == 1) ? "status-paid" : "status-canceled" %>">
+                                        <%= (order.getStatus() == 0) ? "Đang chờ xử lí" : (order.getStatus() == 1) ? "Đã xử lí" : "Đã bị hủy" %>
+                                    </span>
+                                </p>
+                                <p><strong>Phương thức nhận hàng:</strong>
+                                    <%= (order.getReceiveMethod() == 0) ? "Nhận tại cửa hàng" : "Giao hàng tận nơi" %>
+                                </p>
+                                <p><strong>Tổng tiền:</strong> <%=  Util.FormatPrice((int) order.getTotal()) %> VNĐ</p>
+                                <%-- Thêm nút hủy đơn khi đơn hàng chưa bị hủy --%>
+                                <% if (order.getStatus() == 0) { %> <!-- Kiểm tra nếu đơn hàng đang chờ xử lý -->
+                                    <form action="/project_j2ee/CancelOrder" method="POST">
+                                        <input type="hidden" name="orderId" value="<%= order.getId() %>">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fas fa-times"></i> Hủy đơn
+                                        </button>
+                                    </form>
+                                <% } %>
 
-            <%-- Lấy giá trị orders từ request --%>
-            <%
-                List<Order> orders = (List<Order>) request.getAttribute("orders");
-                if (orders != null && !orders.isEmpty()) {
-                    for (Order order : orders) {
-            %>
-                        <div class="order-item">
-                            <h5><i class="fas fa-box"></i> Đơn hàng #<%= order.getId() %></h5>
-                            <p><strong>Ngày đặt:</strong> <%= order.getCreatedAt() %></p>
-                            <p><strong>Trạng thái đơn hàng:</strong>
-                                <span class="order-status 
-                                      <%= (order.getStatus() == 0) ? "status-pending" : (order.getStatus() == 1) ? "status-paid" : "status-canceled" %>">
-                                    <%= (order.getStatus() == 0) ? "Đang chờ xử lí" : (order.getStatus() == 1) ? "Đã xử lí" : "Đã bị hủy" %>
-                                </span>
-                            </p>
-                            <p><strong>Phương thức nhận hàng:</strong>
-                                <%= (order.getReceiveMethod() == 0) ? "Nhận tại cửa hàng" : "Giao hàng tận nơi" %>
-                            </p>
-                            <p><strong>Tổng tiền:</strong> <%=  Util.FormatPrice((int) order.getTotal()) %> VNĐ</p>
-                            <%-- Thêm nút hủy đơn khi đơn hàng chưa bị hủy --%>
-                            <% if (order.getStatus() == 0) { %> <!-- Kiểm tra nếu đơn hàng đang chờ xử lý -->
-                                <form action="/project_j2ee/CancelOrder" method="POST">
-                                    <input type="hidden" name="orderId" value="<%= order.getId() %>">
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fas fa-times"></i> Hủy đơn
-                                    </button>
-                                </form>
-                            <% } %>
-                            
+                            </div>
+                <%
+                        }
+                    } else {
+                %>
+                        <div class="alert alert-info mt-4">
+                            Bạn chưa có đơn hàng nào để theo dõi.
                         </div>
-            <%
+                <%
                     }
-                } else {
-            %>
-                    <div class="alert alert-info mt-4">
-                        Bạn chưa có đơn hàng nào để theo dõi.
-                    </div>
-            <%
-                }
-            %>
-        </div>
+                %>
+            </div>
+        </main>
 
         <!-- Thêm Bootstrap và FontAwesome JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <jsp:include page="../partials/footer.jsp"></jsp:include>
     </body>
 </html>
