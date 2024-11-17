@@ -6,11 +6,11 @@
     </servlet>
     <servlet>
         <servlet-name>AdminProductServlet</servlet-name>
-        <servlet-class>com.cellphone.controller.Admin.AdminProductServlet</servlet-class>
+        <servlet-class>com.cellphone.controller.Admin.ProductServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Dashboard</servlet-name>
-        <servlet-class>com.cellphone.controller.Admin.Dashboard</servlet-class>
+        <servlet-class>com.cellphone.controller.Admin.DashboardServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DatabaseConnection</servlet-name>

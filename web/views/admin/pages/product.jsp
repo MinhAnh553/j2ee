@@ -1,3 +1,4 @@
+<%@page import="com.cellphone.providers.Util"%>
 <%@page import="com.cellphone.model.Product"%>
 <%@page import="com.cellphone.dao.productDAO"%>
 <%@ page import="java.sql.*, java.util.*" %>
@@ -13,7 +14,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
             />
-        <title>Trang quản trị</title>
+        <title>Quản lý sản phẩm</title>
 
         <!--     Fonts and icons     -->
         <link
@@ -45,14 +46,14 @@
                 <table class="product-table">
                     <thead>
                         <tr>
-                            <th>STT</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Hãng</th>
-                            <th>Giá</th>
-                            <th>Màu sắc</th>
-                            <th>Hình ảnh</th>
-                            <th>Mô tả</th>
-                            <th>Thao tác</th>
+                            <th class="text-center">STT</th>
+                            <th class="text-center">Tên sản phẩm</th>
+                            <th class="text-center">Hãng</th>
+                            <th class="text-center">Giá</th>
+                            <th class="text-center">Màu sắc</th>
+                            <th class="text-center">Tồn kho</th>
+                            <th class="text-center">Hình ảnh</th>
+                            <th class="text-center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,15 +67,21 @@
                         %>
                         
                             <tr>
-                                <td><%= stt%></td>
+                                <td class="text-center"><%= stt%></td>
                                 <td><%= product.getName()%></td>
-                                <td><%= product.getBrand()%></td>
-                                <td><%= product.getPrice()%></td>
-                                <td><%= product.getTypeByColor()%></td>
-                                <td><img src="data:image/jpeg;base64,<%= product.getImage() %>" alt="Product Image" width="50"/></td>
-                                <td><%= product.getDescription()%></td>
+                                <td class="text-center"><%= product.getBrand()%></td>
+                                <td class="text-center"><%= Util.FormatPrice(product.getPrice())%>₫</td>
+                                <td class="text-center"><%= product.getTypeByColor()%></td>
+                                <td class="text-end">
+                                    <div style="padding-left: 7px;">
+                                        <%= product.getStock()%>
+                                        <a href="product-inventory/edit?id=<%= product.getId()%>" class="delete-btn" style="background-color: blueviolet">Sửa</a>
+                                    </div>
+                                </td>
+                                <td><img src="data:image/jpeg;base64,<%= product.getImage() %>" alt="Product Image" width="60" style="border: 2px solid #ccc; border-radius: 5px;"/></td>              
                                 <td>
-                                    <a href="product?action=delete&id=<%= product.getId()%>" class="delete-btn">Xóa</a>
+                                    <a href="product/edit?id=<%= product.getId()%>" class="delete-btn" style="background-color: blueviolet">Chỉnh sửa</a>
+                                    <a href="product?action=delete&id=<%= product.getId()%>" class="delete-btn" delete-product>Xóa</a>
                                 </td>
                             </tr>
                         <%
@@ -86,7 +93,7 @@
             </div>
         </main>
         <script>
-            const deleteBtns = document.querySelectorAll(".delete-btn");
+            const deleteBtns = document.querySelectorAll("[delete-product]");
 
             deleteBtns.forEach((deleteBtn) => {
                 deleteBtn.addEventListener("click", (e) => {
@@ -99,8 +106,8 @@
             });
         </script>
         <!--   Core JS Files   -->
+        <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/core/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/core/bootstrap.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
     </body>
 </html>

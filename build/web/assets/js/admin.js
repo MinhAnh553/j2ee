@@ -13,3 +13,8 @@ if (uploadImage) {
         }
     });
 }
+
+// Change active 
+const fullPath = window.location.pathname;
+const tagNeedActive = document.querySelector(`li a[href="${fullPath}"]`);
+tagNeedActive.classList.add('active');

@@ -34,9 +34,10 @@
                 Welcome back<br />Have a good day, Admin!
             </h5>
         </main>
+        
         <!--   Core JS Files   -->
-        <script src="./assets/js/core/popper.min.js"></script>
-        <script src="./assets/js/core/bootstrap.min.js"></script>
-        <script src="./assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/core/popper.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/core/bootstrap.min.js"></script>
     </body>
 </html>

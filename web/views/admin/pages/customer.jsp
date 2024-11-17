@@ -33,8 +33,8 @@
         
         
         <!--   Core JS Files   -->
+        <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/core/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/core/bootstrap.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
     </body>
 </html>

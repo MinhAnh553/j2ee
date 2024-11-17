@@ -4,8 +4,9 @@ public class Product {
     int id;            // ID của sản phẩm
     String name;       // Tên của sản phẩm
     String brand;      // Thương hiệu của sản phẩm
-    double price;      // Giá của sản phẩm
+    int price;      // Giá của sản phẩm
     String typeByColor;      // Màu sắc của sản phẩm
+    int stock;
     String image;      // Đường dẫn hình ảnh của sản phẩm
     String description;       // Mô tả của sản phẩm
     String slug;
@@ -15,7 +16,7 @@ public class Product {
         this.name="";
     }
     
-    public Product(String name, String brand, double price, String typeByColor, String image, String description, String slug) {
+    public Product(String name, String brand, int price, String typeByColor, String image, String description, String slug) {
         this.name = name;
         this.brand = brand;
         this.price = price;
@@ -25,7 +26,7 @@ public class Product {
         this.slug = slug;
     }
     
-    public Product(int id, String name, String brand, double price, String typeByColor, String image, String description) {
+    public Product(int id, String name, String brand, int price, String typeByColor, String image, String description, int stock) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -33,6 +34,7 @@ public class Product {
         this.typeByColor = typeByColor;
         this.image = image;
         this.description = description;
+        this.stock = stock;
     }
 
 
@@ -61,11 +63,18 @@ public class Product {
     }
 
     // Getter và Setter cho price
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
+    }
+    
+    public int getStock() {
+        return stock;
+    }
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     // Getter và Setter cho color
