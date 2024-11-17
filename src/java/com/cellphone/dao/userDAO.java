@@ -81,36 +81,6 @@ public class userDAO {
         return null;
     }
     
-    public userModel getUserById(int id) {
-        String sql = "SELECT * FROM users WHERE id = ?";
-        
-        try(Connection conn = DatabaseConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql);) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if(rs.next()) {
-                userModel user = new userModel();
-                
-                user.setId(rs.getInt("id"));
-                user.setRole(rs.getInt("role"));
-                user.setEmail(rs.getString("email"));
-                user.setFullName(rs.getString("fullName"));
-                user.setPhone(rs.getString("phoneNumber"));
-                user.setPassword(rs.getString("password"));
-                user.setToken(rs.getString("token"));
-                
-                rs.close();
-                stmt.close();
-                conn.close();
-                
-                return user;
-            }
-        } catch(SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
     public userModel create(userModel user) {
         String token = Util.generateToken();
         String sql = "INSERT INTO users(email, password, fullName, token) VALUES (?,?,?,?)";

@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="CellPhone" default="default" basedir=".">
-    <description>Builds, tests, and runs the project CellPhone.</description>
+<project name="project_j2ee" default="default" basedir=".">
+    <description>Builds, tests, and runs the project project_j2ee.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

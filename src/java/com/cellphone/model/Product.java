@@ -1,12 +1,20 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.cellphone.model;
+
+/**
+ *
+ * @author duylo
+ */
 
 public class Product {
     int id;            // ID của sản phẩm
     String name;       // Tên của sản phẩm
     String brand;      // Thương hiệu của sản phẩm
-    int price;      // Giá của sản phẩm
+    double price;      // Giá của sản phẩm
     String typeByColor;      // Màu sắc của sản phẩm
-    int stock;
     String image;      // Đường dẫn hình ảnh của sản phẩm
     String description;       // Mô tả của sản phẩm
     String slug;
@@ -15,28 +23,10 @@ public class Product {
     public Product() {
         this.name="";
     }
-    
-    public Product(String name, String brand, int price, String typeByColor, String image, String description, String slug) {
-        this.name = name;
-        this.brand = brand;
-        this.price = price;
-        this.typeByColor = typeByColor;
-        this.image = image;
-        this.description = description;
-        this.slug = slug;
-    }
-    
-    public Product(int id, String name, String brand, int price, String typeByColor, String image, String description, int stock) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.price = price;
-        this.typeByColor = typeByColor;
-        this.image = image;
-        this.description = description;
-        this.stock = stock;
-    }
 
+    public Product(String productId, String productName, String productImage, String productPrice) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     // Getter và Setter cho id
     public int getId() {
@@ -63,18 +53,11 @@ public class Product {
     }
 
     // Getter và Setter cho price
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
-    }
-    
-    public int getStock() {
-        return stock;
-    }
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 
     // Getter và Setter cho color
