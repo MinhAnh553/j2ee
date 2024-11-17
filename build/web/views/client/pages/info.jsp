@@ -84,6 +84,11 @@
                 </div>
             </section>
             <div class="container">
+                <form action="/project_j2ee/AddToCart" method="POST">
+                    <input type="hidden" name="productId" value="${product.id}" />
+                    <input type="hidden" name="productName" value="${product.name}" />
+                    <input type="hidden" name="productPrice" value="${product.price}" />
+                    <input type="hidden" name="productImage" value="${product.image}" />
                 <div class="info info-product">
                     <h1 class="info__heading">
                         Tên sản phẩm: ${product.name}
@@ -91,7 +96,7 @@
                     <div class="info__content row">
                         <div class="info__left col-md-7">
                             <div class="info__left-block">
-                                <img class="product-image" src="data:image/jpeg;base64,<c:url value='${product.image}' />" alt="${product.name}">
+                                <img class="product-image" src="<c:url value='${product.image}' />" alt="${product.name}">
 
                             </div>
 
@@ -132,7 +137,7 @@
                                     <i class="fa fa-calendar"></i> ĐẶT LỊCH MUA HÀNG
                                 </button>
                                 <button
-                                    class="groupbtn__cart col-lg-5 col-md-4 col"
+                                    type="submit" class="groupbtn__cart col-lg-5 col-md-4 col"
                                 >
                                     <i
                                         class="fa fa-shopping-cart"
@@ -312,6 +317,7 @@
                         </div>
                     </div>
                 </div>
+            </form>
             </div>
         </main>
 
