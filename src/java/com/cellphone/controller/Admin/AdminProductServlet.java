@@ -14,9 +14,9 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/admin/product")
 public class AdminProductServlet extends HttpServlet {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/cellphone";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = ""; 
+    private static final String URL = "jdbc:mysql://103.74.101.111:3306/cellphone?useSSL=false";
+    private static final String USER = "cellphone";
+    private static final String PASSWORD = "cellphone"; 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Nhan data tu form
@@ -39,7 +39,7 @@ public class AdminProductServlet extends HttpServlet {
         // Them vao CSDL
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
 
             String sql = "INSERT INTO product (name, brand, price, typeByColor, image, description, parameter) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -77,7 +77,7 @@ public class AdminProductServlet extends HttpServlet {
             String id = request.getParameter("id");
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+                Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
 
                 String sql = "DELETE FROM product WHERE id=?";
                 PreparedStatement stmt = conn.prepareStatement(sql);

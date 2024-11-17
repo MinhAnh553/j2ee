@@ -3,9 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/web/views/admin/pages/product.jsp</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/web/views/admin/pages/add_product.jsp</file>
-            <file>file:/D:/MinhAnh/Study/HK1_2425/CellPhone/src/java/com/cellphone/controller/Admin/AddProductServlet.java</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/dao/InvoiceDAO.java</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/dao/Products.java</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/controller/Admin/AdminProductServlet.java</file>
+            <file>file:/C:/J2EE/j2ee/web/assets/css/invoice.css</file>
+            <file>file:/C:/J2EE/j2ee/web/assets/js/invoice.js</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/providers/DBConnectionUtil.java</file>
+            <file>file:/C:/J2EE/j2ee/web/views/admin/pages/product.jsp</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/model/ProductDetail.java</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/controller/Admin/InvoiceServlet.java</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/model/Invoice.java</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/dao/productDAO.java</file>
+            <file>file:/C:/J2EE/j2ee/src/java/com/cellphone/controller/Admin/orderServlet.java</file>
+            <file>file:/C:/J2EE/j2ee/web/views/admin/pages/invoice.jsp</file>
         </group>
     </open-files>
 </project-private>
